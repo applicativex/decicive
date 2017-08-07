@@ -7,11 +7,20 @@ namespace AnalyticHierarchyProcessDSS.WolframEngine.Mathematica
 {
     public class LeastSquaresMinimizationStrategy : IMinimizationStrategy
     {
+        private readonly Func<IMatrix<double>, double> _minimizationValue;
+        private readonly Func<IMatrix<double>, double[]> _minimizationArguments;
         private readonly IKernelLink _kernel;
 
         public LeastSquaresMinimizationStrategy(IKernelLink kernel)
         {
             _kernel = kernel;
+        }
+
+        public LeastSquaresMinimizationStrategy(Func<IMatrix<double>, double> minimizationValue,
+            Func<IMatrix<double>, double[]> minimizationArguments)
+        {
+            _minimizationValue = minimizationValue;
+            _minimizationArguments = minimizationArguments;
         }
 
         public double MinimizationValue(IMatrix<double> matrix)

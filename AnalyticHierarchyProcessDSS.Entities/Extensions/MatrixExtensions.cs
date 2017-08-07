@@ -154,4 +154,8 @@ namespace AnalyticHierarchyProcessDSS.Entities.Extensions
 
         #endregion
     }
+
+    class MyClass
+    {
+    }
 }

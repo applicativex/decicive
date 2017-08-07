@@ -8,6 +8,11 @@ using AnalyticHierarchyProcessDSS.WolframEngine;
 using AnalyticHierarchyProcessDSS.WolframEngine.Mathematica;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+using Accord.Math;
+using System.Diagnostics;
+using Accord.Math.Decompositions;
+
+
 namespace AnalyticHierarchyProcessDSS.Tests.EigenVectorTests
 {
     [TestClass]
@@ -53,6 +58,34 @@ namespace AnalyticHierarchyProcessDSS.Tests.EigenVectorTests
 
             //// assert
             Assert.AreEqual(actual, expected);
+        }
+
+        [TestMethod]
+        public void EigenSystem()
+        {
+            //double[,] A =
+            //{
+            //    {1, 2, 3},
+            //    {6, 2, 0},
+            //    {0, 0, 1}
+            //};
+
+            double[,] A =
+            {
+                {-1, -6},
+                { 2, 6}
+            };
+
+            double[,] B =
+            {
+                {2, 0, 0},
+                {0, 2, 0},
+                {0, 0, 2}
+            };
+            var eig = new GeneralizedEigenvalueDecomposition(A, Matrix.Identity(3));
+            
+            var V = eig.Eigenvectors;
+            var D = eig.DiagonalMatrix;
         }
     }
 }

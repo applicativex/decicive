@@ -9,9 +9,9 @@ namespace AnalyticHierarchyProcessDSS.WolframEngine
 {
     public interface IEvaluationEngine : IDisposable
     {
-        EigenSystem GetEigenSystem(IMatrix<double> matrix);
-
         IMinimizationStrategy CreatemMinimizationStrategy(string name);
+
+        EigenSystem GetEigenSystem(IMatrix<double> matrix);
 
         EigenPair GetMaxEigenPair(IMatrix<double> matrix);
 
